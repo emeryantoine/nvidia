@@ -77,7 +77,7 @@ void MulMatrixKernel(double* A, double* B, double* C, int N)
     {
 	sum += share_A[i][threadIdx.y]*share_B[threadIdx.x][i];
     }
-
+    __syncthreads();
   }
 
   C[line * N + col] = sum;
